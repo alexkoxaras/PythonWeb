@@ -4,18 +4,24 @@
 <form>
   <fieldset class="form-group">
     <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Ομάδες</legend>
+      <legend class="col-form-label col-sm-2 pt-0">Άτόμα ανά ομάδα</legend>
       <div class="col-sm-10">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
           <label class="form-check-label" for="gridRadios1">
-            2 ομάδες
+            2 άτομα
           </label>
         </div>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
           <label class="form-check-label" for="gridRadios2">
-            3 ομάδες
+            3 άτομα
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+          <label class="form-check-label" for="gridRadios2">
+            4-5 άτομα
           </label>
         </div>
       </div>
@@ -24,29 +30,24 @@
 	<div class="form-group row">
 		<div class="col-sm-2">Χρονόμετρο
 		</div>
-			<div class="col-sm-10">
+			<div class="col-sm-2">
 				<div class="form-check">
-				<input class="form-check-input" type="checkbox" onchange="document.getElementById('btngroup').disabled = !this.checked;" name="timer" id="timerCheckBx">
-				<label class="form-check-label" for="timerCheckBx">
-				Ενεργοποίηση
-				</label>				
+					<input class="form-check-input" type="checkbox" onchange="document.getElementById('btn1') = !this.checked;" name="timer" id="btn1">
+					<label class="form-check-label" for="timerCheckBx">
+						Ενεργοποίηση
+					</label>				
 				</div>
 			</div>
-	</div>
-	<div class="form-group row">
-		<div class="col-sm-2"></div>
-		<div class="btn-group mr-2" role="group" aria-label="First group" id="btngroup">
-			<button type="button" class="btn btn-primary" name='btn1'>1</button>
-			<button type="button" class="btn btn-primary">2</button>
-			<button type="button" class="btn btn-primary">3</button>
-			<button type="button" class="btn btn-primary">4</button>
-		</div>
-	</div>
-	
-	
-	<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-
-	</div>
+			<div class="col-sm-3">
+			<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+				<div class="btn-group mr-2" role="group" aria-label="First group" id="btngroup">
+					<button type="button" class="btn btn-primary" disabled name="btn1" id="btn1">2</button>
+					<button type="button" class="btn btn-primary" disabled >3</button>
+					<button type="button" class="btn btn-primary" disabled >4</button>
+				</div>
+			</div>
+			</div>
+	</div>	
   <br>
   <div class="form-group row">
     <div class="col-sm-10">
