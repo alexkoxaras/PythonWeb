@@ -4,13 +4,80 @@
 <head>
 	<title>Game Tree's Galaxial Colonization</title>
 	<meta charset="utf-8" />
+	{% load staticfiles %}
+	<link rel="shortcut icon" type="image/png" href="{% static 'personal/img/icon.png' %}"/>
+	<link rel="stylesheet" href="{% static 'personal/css/bootstrap.min.css' %}" type = "text/css"/>
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+	<style type="text/css">
+		html,
+		body {
+		  height:100%
+		}
+		
+		.video-container {
+		position: relative;
+		padding-bottom: 56.25%;
+		padding-top: 15px; height: 0; overflow: hidden;
+		}
+
+		.video-container iframe,
+		.video-container object,
+		.video-container embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		}
+	</style>
 </head>
 
 <body class="body" style="background-color:#f6f6f6">
-	<div>
-	   {% block content %}
-	   {% endblock %}	
+	<div class="container-fluid" style="min-height:95%; ">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="/">
+			<img src="{% static 'personal/img/profile.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+			Διαγαλαξιακός Αποικισμός
+			</a>
+		</nav>
+		<hr>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Έναρξη</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/settings">Ρυθμίσεις</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% static 'personal/documents/instructions.pdf' %}" type = "text/pdf"/" target="_blank">Οδηγίες</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/intro">Εισαγωγή</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="row">
+		  <div class="col-sm-10">
+			<div class='container-fluid'>
+			   {% block content %}
+			   {% endblock %}	
+			</div>
+		  </div>
+		</div> 
 	</div>
+	<footer>
+		<div class="container-fluid">
+			<p align="center">Copyright &#169; GameTree 2018. All rights reserved. This webapp is based on <b>Ecopozone</b> by Metalog</p>
+		</div>
+	</footer>	
+	
 </body>
 
 </html>
