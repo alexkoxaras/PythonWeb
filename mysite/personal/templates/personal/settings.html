@@ -31,7 +31,7 @@
 		<div class="col-sm-2">Χρονόμετρο</div>
 		<div class="col-sm-2">
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" name="timer" id="checkboxtimer">
+				<input class="form-check-input" type="checkbox" name="timer" id="checkboxtimer" checked="true" disabled>
 				<label class="form-check-label" for="timerCheckBx">
 					Ενεργοποίηση
 				</label>				
@@ -61,8 +61,8 @@
 			<button type="submit" class="btn btn-primary">Αποθήκευση</button>
 		</div>
 	</div>
-	
-	<script>
+  </div>
+ 	<script>
 	function myFunction() {
 		var x = document.getElementsByName("gridRadios");
 		var getButton = document.getElementsByName("rdbtn");
@@ -82,7 +82,6 @@
 		}
 	}
 	</script>
-  </div>
 </form>
 
 {% endblock %}

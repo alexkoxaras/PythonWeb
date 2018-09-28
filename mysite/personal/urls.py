@@ -4,5 +4,6 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url('^settings/', views.properties, name='properties'),
-    url('^intro/', views.videointro, name='videointro')
+    url('^intro/', views.videointro, name='videointro'),
+    url('^game/', views.thegame, name='thegame')
 ]

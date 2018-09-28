@@ -9,3 +9,6 @@ def properties(request):
 
 def videointro(request):
 	return render(request, 'personal/intro.html')
+
+def thegame(request):
+	return render(request, 'personal/game.html')

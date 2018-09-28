@@ -1,0 +1,30 @@
+{% extends "personal/header.html" %}
+
+{% block content %}
+<form>
+	<div class="form-group">
+		<label for="formGroupExampleInput" id="myLabel">Παρακαλώ επιλέξτε ποσότητα για την </label>
+		<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Εισάγετε ποσότητα">
+	</div>
+ </form>
+ 
+<div id="carsDiv"></div>
+<button id="addCarBtn">Υποβολή</button>
+
+<script>
+var current = 0;
+var teams = new Array(3);
+teams[0] = "Κόκκινη";
+teams[1] = "Κίτρινη";
+teams[2] = "Μπλε";
+document.getElementById("addCarBtn").onclick = function() {
+       if (!(current > teams.length - 1))
+       {
+            document.getElementById("myLabel").innerHTML += teams[current] + " ομάδα";
+			current++
+       }
+	   if (current >= teams.length){
+	   current = 0;}
+}
+</script>
+{% endblock %}
