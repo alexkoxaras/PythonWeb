@@ -1,58 +1,87 @@
 {% extends "personal/header.html" %}
 
 {% block content %}
-<form>
-  <fieldset class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Άτόμα ανά ομάδα</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-          <label class="form-check-label" for="gridRadios1">
-            2 άτομα
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-          <label class="form-check-label" for="gridRadios2">
-            3 άτομα
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
-          <label class="form-check-label" for="gridRadios2">
-            4-5 άτομα
-          </label>
-        </div>
-      </div>
-    </div>
-  </fieldset>
-	<div class="form-group row">
-		<div class="col-sm-2">Χρονόμετρο
+<form action="/settings=form/" method="post">
+	<fieldset class="form-group">
+		<div class="row">
+		  <legend class="col-form-label col-sm-2 pt-0">Άτόμα ανά ομάδα</legend>
+		  <div class="col-sm-10">
+			<div class="form-check">
+			  <input class="form-check-input" type="radio" name="gridRadios" id="twopersons" onclick="myFunction()" value="2" checked>
+			  <label class="form-check-label" for="twopersons">
+				2 άτομα
+			  </label>
+			</div>
+			<div class="form-check">
+			  <input class="form-check-input" type="radio" name="gridRadios" id="threepersons" onclick="myFunction()" value="3">
+			  <label class="form-check-label" for="threepersons">
+				3 άτομα
+			  </label>
+			</div>
+			<div class="form-check">
+			  <input class="form-check-input" type="radio" name="gridRadios" id="fourpersons" onclick="myFunction()" value="4">
+			  <label class="form-check-label" for="fourpersons">
+				4-5 άτομα
+			  </label>
+			</div>
+		  </div>
 		</div>
-			<div class="col-sm-2">
-				<div class="form-check">
-					<input class="form-check-input" type="checkbox" onchange="document.getElementById('btn1') = !this.checked;" name="timer" id="btn1">
-					<label class="form-check-label" for="timerCheckBx">
-						Ενεργοποίηση
-					</label>				
-				</div>
+	</fieldset>
+	<div class="form-group row">
+		<div class="col-sm-2">Χρονόμετρο</div>
+		<div class="col-sm-2">
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" name="timer" id="checkboxtimer">
+				<label class="form-check-label" for="timerCheckBx">
+					Ενεργοποίηση
+				</label>				
 			</div>
-			<div class="col-sm-3">
-			<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-				<div class="btn-group mr-2" role="group" aria-label="First group" id="btngroup">
-					<button type="button" class="btn btn-primary" disabled name="btn1" id="btn1">2</button>
-					<button type="button" class="btn btn-primary" disabled >3</button>
-					<button type="button" class="btn btn-primary" disabled >4</button>
-				</div>
+		</div>
+		<div class="col-sm-3">
+		<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+			<div class="btn-group mr-2" role="group" aria-label="First group" id="btngroup">
+				<button type="button" class="btn btn-primary" name="rdbtn" id="btn1">2</button>
+				<button type="button" class="btn btn-primary" disabled name="rdbtn" id="btn2">3</button>
+				<button type="button" class="btn btn-primary" disabled name="rdbtn" id="btn3">4</button>
 			</div>
-			</div>
-	</div>	
-  <br>
-  <div class="form-group row">
-    <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary">Αποθήκευση</button>
-    </div>
+		</div>
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-sm-2">
+			<label for="ecopozoneQuantity">Ποσότητα</label>
+		</div>
+		<div class="col-sm-1">
+			<text class="form-control" id="ecopozoneQuantity">40</text>
+		</div>
+	</div>
+	<br>
+	<div class="form-group row">
+		<div class="col-sm-10">
+			<button type="submit" class="btn btn-primary">Αποθήκευση</button>
+		</div>
+	</div>
+	
+	<script>
+	function myFunction() {
+		var x = document.getElementsByName("gridRadios");
+		var getButton = document.getElementsByName("rdbtn");
+		var i;
+		for (i = 0; i < x.length; i++) 
+		{
+        if (x[i].type == "radio") 
+			{
+            if (x[i].checked == true) 
+				{
+				document.getElementById(getButton[i].id).disabled = false ;
+				}
+				else {
+				document.getElementById(getButton[i].id).disabled = true;
+				}
+			}
+		}
+	}
+	</script>
   </div>
 </form>
 

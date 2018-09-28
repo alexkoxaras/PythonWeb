@@ -7,6 +7,8 @@
 	{% load staticfiles %}
 	<link rel="shortcut icon" type="image/png" href="{% static 'personal/img/icon.png' %}"/>
 	<link rel="stylesheet" href="{% static 'personal/css/bootstrap.min.css' %}" type = "text/css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
 	<style type="text/css">
 		html,
@@ -38,19 +40,19 @@
 			<img src="{% static 'personal/img/profile.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
 			Διαγαλαξιακός Αποικισμός
 			</a>
-		</nav>
+		</nav>		
 		<hr>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 	aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link" href="/">Έναρξη</a>
+						<a class="nav-link" href="/settings">Ρυθμίσεις</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/settings">Ρυθμίσεις</a>
+						<a class="nav-link" href="/">Έναρξη</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{% static 'personal/documents/instructions.pdf' %}" type = "text/pdf"/" target="_blank">Οδηγίες</a>
@@ -76,7 +78,6 @@
 			<p align="center">Copyright &#169; GameTree 2018. All rights reserved. This webapp is based on <b>Ecopozone</b> by Metalog</p>
 		</div>
 	</footer>	
-	
 </body>
 
 </html>
