@@ -1,8 +1,6 @@
 {% extends "personal/header.html" %}
 <style type="text/css">
-h1, h2 {
-    display: inline-block;
-}
+
 </style>
 
 {% block content %}
@@ -16,7 +14,7 @@ h1, h2 {
 			<form>
 				<div class="form-group">
 					<label for="formGroupExampleInput" id="myLabel" name="label1">Ποσότητα για την </label>
-					<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Εισάγετε ποσότητα">
+					<input type="number" min="0" class="form-control" id="formGroupExampleInput" placeholder="Εισάγετε ποσότητα">
 				</div>
 			</form>
 		</div>
@@ -24,7 +22,7 @@ h1, h2 {
 			<form>
 				<div class="form-group">
 					<label for="formGroupExampleInput" id="myLabel" name="label2">Ποσότητα για την </label>
-					<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Εισάγετε ποσότητα">
+					<input type="number" min="0" class="form-control" id="formGroupExampleInput" placeholder="Εισάγετε ποσότητα">
 				</div>
 			</form>
 		</div>
@@ -32,7 +30,7 @@ h1, h2 {
 			<form>
 				<div class="form-group">
 					<label for="formGroupExampleInput" id="myLabel" name="label3">Ποσότητα για την </label>
-					<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Εισάγετε ποσότητα">
+					<input type="number" min="0" class="form-control" id="formGroupExampleInput" placeholder="Εισάγετε ποσότητα">
 				</div>
 			</form>
 		</div>
@@ -51,15 +49,19 @@ h1, h2 {
 	teams[2] = "Μπλε";
 	document.getElementById("nextroundbtn").onclick = function() {
 			count = parseInt(document.getElementById("number").innerHTML) + 1;
-			document.getElementById("number").innerHTML = count + roundText;
-			html(parseInt(document.getElementById("number").html(), 10)+1);
-			if (!(current > teams.length - 1))
-			{
-				document.getElementById("myLabel").innerHTML += teams[current] + " ομάδα";
-				current++
+			if (count >= 11){
+				window.location = "/gameover";}
+			else{
+				document.getElementById("number").innerHTML = count + roundText;
+				html(parseInt(document.getElementById("number").html(), 10)+1);
+				if (!(current > teams.length - 1))
+				{
+					document.getElementById("myLabel").innerHTML += teams[current] + " ομάδα";
+					current++
+				}
+				if (current >= teams.length){
+				current = 0;}
 			}
-			if (current >= teams.length){
-			current = 0;}
 }
 </script>
 {% endblock %}

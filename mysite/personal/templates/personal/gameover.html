@@ -1,0 +1,13 @@
+{% extends "personal/header.html" %}
+
+{% block content %}
+{% load staticfiles %}
+
+<div class="jumbotron" id="endDiv" align="center">
+	<img src="{% static 'personal/img/icon2.png' %}" width="60" height="60" id="spaceship2" class="d-inline-block align-bottom" alt="">
+	<h1 class="display-4">Το παιχνίδι τελείωσε! :( </h1>
+	<p class="lead">Δυστυχώς, άλλος ένας Διαγαλαξιακός Αποικισμός έφτασε στο τέλος του!</p>
+	<hr class="my-4">
+	<p>Νικήτρια είναι η ομάδα...</p>
+</div>
+{% endblock %}

@@ -12,3 +12,6 @@ def videointro(request):
 
 def thegame(request):
 	return render(request, 'personal/game.html')
+
+def gameended(request):
+	return render(request, 'personal/gameover.html')
