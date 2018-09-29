@@ -1,10 +1,15 @@
 {% extends "personal/header.html" %}
+<style type="text/css">
+h1, h2 {
+    display: inline-block;
+}
+</style>
 
 {% block content %}
 <div class="jumbotron">
-	<h1 class="display-4"><b>1<sup>ος</sup> γύρος</b></h1>
-	<p class="lead">Όλες οι ομάδες επιστρέφουν από δύο άδειες μπουκάλες Ecopozone και ενημερώνουν τον εκπαιδευτή για την ποσότητα που έχουν αποφασίσει με την ομάδα τους, πως θα εξορύξουν από το απόθεμα!</p>
-	<p class="lead">Η σειρά με την οποία οι ομάδες θα ανεφοδιαστούν είναι η εξής: </p>
+	<h1 class="display-4" id="number">1<sup>ος</sup> γύρος</h1>
+	<p class="lead" id="instructions">Όλες οι ομάδες επιστρέφουν από δύο άδειες μπουκάλες Ecopozone και ενημερώνουν τον εκπαιδευτή για την ποσότητα που έχουν αποφασίσει με την ομάδα τους, πως θα εξορύξουν από το απόθεμα!</p>
+	<p class="lead" id="playerSequence">Η σειρά, με την οποία οι ομάδες θα ανεφοδιαστούν, είναι η εξής: </p>
 	<br>
 	<div class="row">
 		<div class="col-sm-4">
@@ -39,17 +44,22 @@
 <script>
 	var current = 0;
 	var teams = new Array(3);
+	var count;
+	var roundText = "<sup>ος</sup> γύρος";
 	teams[0] = "Κόκκινη";
 	teams[1] = "Κίτρινη";
 	teams[2] = "Μπλε";
 	document.getElementById("nextroundbtn").onclick = function() {
-		   if (!(current > teams.length - 1))
-		   {
+			count = parseInt(document.getElementById("number").innerHTML) + 1;
+			document.getElementById("number").innerHTML = count + roundText;
+			html(parseInt(document.getElementById("number").html(), 10)+1);
+			if (!(current > teams.length - 1))
+			{
 				document.getElementById("myLabel").innerHTML += teams[current] + " ομάδα";
 				current++
-		   }
-		   if (current >= teams.length){
-		   current = 0;}
+			}
+			if (current >= teams.length){
+			current = 0;}
 }
 </script>
 {% endblock %}
