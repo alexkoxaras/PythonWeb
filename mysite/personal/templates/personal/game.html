@@ -1,9 +1,13 @@
 {% extends "personal/header.html" %}
+
+
+{% block content %}
 <style type="text/css">
 
 </style>
-
-{% block content %}
+{% load staticfiles %}
+<!--<script src="{% static 'personal/js/eco.mytimer.js' %}"></script>-->
+	
 <div class="jumbotron">
 	<h1 class="display-4" id="number">1<sup>ος</sup> γύρος</h1>
 	<p class="lead" id="instructions">Όλες οι ομάδες επιστρέφουν από δύο άδειες μπουκάλες Ecopozone και ενημερώνουν τον εκπαιδευτή για την ποσότητα που έχουν αποφασίσει με την ομάδα τους, πως θα εξορύξουν από το απόθεμα!</p>
@@ -13,7 +17,7 @@
 		<div class="col-sm-4">
 			<form>
 				<div class="form-group">
-					<label for="formGroupExampleInput" id="myLabel" name="label1">Ποσότητα για την </label>
+					<label for="formGroupExampleInput" id="slotLabel1" name="label1">Ποσότητα για την </label>
 					<input type="number" min="0" class="form-control" id="formGroupExampleInput" placeholder="Εισάγετε ποσότητα">
 				</div>
 			</form>
@@ -21,7 +25,7 @@
 		<div class="col-sm-4">
 			<form>
 				<div class="form-group">
-					<label for="formGroupExampleInput" id="myLabel" name="label2">Ποσότητα για την </label>
+					<label for="formGroupExampleInput" id="slotLabel2" name="label2">Ποσότητα για την </label>
 					<input type="number" min="0" class="form-control" id="formGroupExampleInput" placeholder="Εισάγετε ποσότητα">
 				</div>
 			</form>
@@ -29,39 +33,69 @@
 		<div class="col-sm-4">
 			<form>
 				<div class="form-group">
-					<label for="formGroupExampleInput" id="myLabel" name="label3">Ποσότητα για την </label>
+					<label for="formGroupExampleInput" id="slotLabel3" name="label3">Ποσότητα για την </label>
 					<input type="number" min="0" class="form-control" id="formGroupExampleInput" placeholder="Εισάγετε ποσότητα">
 				</div>
 			</form>
 		</div>
 	</div>
 	<br>
-	<a class="btn btn-primary btn-block" href="#" role="button" id="nextroundbtn">Επόμενος γύρος</a>
+	<a class="btn btn-primary btn-block" href="#" role="button" id="nextroundbtn" name="dnextroundbtn">Επόμενος γύρος</a>
 </div>
 
 <script>
-	var current = 0;
-	var teams = new Array(3);
 	var count;
 	var roundText = "<sup>ος</sup> γύρος";
-	teams[0] = "Κόκκινη";
-	teams[1] = "Κίτρινη";
-	teams[2] = "Μπλε";
-	document.getElementById("nextroundbtn").onclick = function() {
+	var current = 0;
+	var t;
+	var teams = new Array("Κόκκινη", "Κίτρινη", "Μπλε");
+	var teams2d = new Array(
+	["Κόκκινη", "Κίτρινη", "Μπλε"],
+	["Κίτρινη", "Μπλε", "Κόκκινη"],
+	["Μπλε", "Κόκκινη", "Κίτρινη"],
+	["Κόκκινη", "Μπλε", "Κίτρινη"],
+	["Μπλε", "Κίτρινη", "Κόκκινη"],
+	["Κίτρινη", "Κόκκινη", "Μπλε"],
+	["Κόκκινη", "Κίτρινη", "Μπλε"],
+	["Κίτρινη", "Μπλε", "Κόκκινη"],
+	["Μπλε", "Κόκκινη", "Κίτρινη"],
+	["Κόκκινη", "Μπλε", "Κίτρινη"]
+	);
+	var teamLabels = new Array("slotLabel1", "slotLabel2", "slotLabel3");
+	
+	for (t = 0; t < teams.length; t++){
+		document.getElementById(teamLabels[t]).innerHTML = "Ποσότητα για την " + teams2d[current][t] + " ομάδα";
+	}
+	current = current + 1;
+	document.getElementById("nextroundbtn").onclick = function teamsPermutation() {
+		if (count >= 10){
+			window.location = "/gameover";}
+		else{
 			count = parseInt(document.getElementById("number").innerHTML) + 1;
-			if (count >= 11){
-				window.location = "/gameover";}
-			else{
-				document.getElementById("number").innerHTML = count + roundText;
-				html(parseInt(document.getElementById("number").html(), 10)+1);
-				if (!(current > teams.length - 1))
-				{
-					document.getElementById("myLabel").innerHTML += teams[current] + " ομάδα";
-					current++
-				}
-				if (current >= teams.length){
-				current = 0;}
+			document.getElementById("number").innerHTML = count + roundText;
+			for (t = 0; t < teams.length; t++){
+				document.getElementById(teamLabels[t]).innerHTML = "Ποσότητα για την " + teams2d[current][t] + " ομάδα";
 			}
-}
+			current = current + 1;
+			return;
+		}
+	  }
+	  
+
+	var countDownDate = new Date().getTime() + 1000*60*1;
+
+	var x = setInterval(function() {
+		var now = new Date().getTime();
+		var distance = countDownDate - now;
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		
+		document.getElementById("nextroundbtn").innerHTML = minutes + "m " + seconds + "s ";
+	   
+		if (distance < 0) {
+			clearInterval(x);
+			document.getElementById("nextroundbtn").innerHTML = "Επόμενος γύρος";
+		}
+	}, 1000);
 </script>
 {% endblock %}
