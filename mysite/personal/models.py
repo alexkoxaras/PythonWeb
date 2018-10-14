@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 
 
 class Topic (models.Model):
@@ -13,6 +14,7 @@ class Topic (models.Model):
 	def __str__ (self):
 		return(self.topic_entry)
 	
+
 	
 class Game(models.Model):
 	game_title = models.CharField(max_length=60, blank=True, verbose_name ='Τίτλος')
