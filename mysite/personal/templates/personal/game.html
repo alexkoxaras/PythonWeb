@@ -40,7 +40,12 @@
 		</div>
 	</div>
 	<br>
-	<a class="btn btn-primary btn-block" href="#" role="button" id="nextroundbtn" name="dnextroundbtn">Επόμενος γύρος</a>
+	<a class="btn btn-primary btn-block" href="#" role="button" id="nextroundbtn" name="nextroundbtn">Επόμενος γύρος</a>
+	<br>
+	<div class="progress">
+		<div class="progress-bar bg-warning" id="progtimer" role="progressbar" style="width: 100%" aria-valuenow="60000" aria-valuemin="0" aria-valuemax="60000"></div>
+	</div>
+	
 </div>
 
 <script>
@@ -79,23 +84,26 @@
 			current = current + 1;
 			return;
 		}
-	  }
-	  
+	}
 
 	var countDownDate = new Date().getTime() + 1000*60*1;
-
-	var x = setInterval(function() {
+	var x = setInterval(countDownTimer, 1000);
+	function countDownTimer() {
 		var now = new Date().getTime();
 		var distance = countDownDate - now;
 		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 		
-		document.getElementById("nextroundbtn").innerHTML = minutes + "m " + seconds + "s ";
+		document.getElementById("progtimer").innerHTML = minutes + "m " + seconds + "s ";
+		document.getElementById("progtimer").style = "width: " + distance/600 + "%";		
 	   
 		if (distance < 0) {
 			clearInterval(x);
 			document.getElementById("nextroundbtn").innerHTML = "Επόμενος γύρος";
+			document.getElementById("progtimer").style = "width: " + 0 + "%";
+			document.getElementById("progtimer").innerHTML = "";			
 		}
-	}, 1000);
+	}
+	
 </script>
 {% endblock %}

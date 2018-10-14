@@ -15,3 +15,6 @@ def thegame(request):
 
 def gameended(request):
 	return render(request, 'personal/gameover.html')
+
+def gamedb(request):
+	return render(request, 'personal/gamedb.html')

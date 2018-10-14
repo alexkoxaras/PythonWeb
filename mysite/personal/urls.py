@@ -6,5 +6,6 @@ urlpatterns = [
     url('^settings/', views.properties, name='properties'),
     url('^intro/', views.videointro, name='videointro'),
     url('^gameover/', views.gameended, name='gameended'),
-    url('^game/', views.thegame, name='thegame')
+    url('^game/', views.thegame, name='thegame'),
+	url('^gamedb/', views.gamedb, name='gamedb')
 ]
