@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import TopicForm, GameForm
+from django.views.generic import CreateView
 
 def index(request):
     return render(request, 'personal/home.html')
@@ -22,7 +23,7 @@ def gamedb(request):
 	
 def post_new(request):
 	if request.method == "POST":
-		form = GameForm(request.POST)
+		form = GameForm(request.POST or None)
 		if form.is_valid():
 			post = form.save(commit=False)
 			post.save()
