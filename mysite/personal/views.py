@@ -2,11 +2,18 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import TopicForm, GameForm
 from django.views.generic import CreateView
+#from django.contrib import messages
+
+
 
 def index(request):
     return render(request, 'personal/home.html')
 
 def properties(request):
+	#global simple_variable
+    #simple_variable = value
+	#myValue = request.POST.get('gridRadios')
+	#myValue = request.session['threepersons']
 	return render(request, 'personal/settings.html')
 
 def videointro(request):
